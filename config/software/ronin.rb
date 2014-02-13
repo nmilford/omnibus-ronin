@@ -1,0 +1,17 @@
+name       "ronin"
+version    "0.1.1"
+dependency "gdbm"
+dependency "db"
+dependency "ruby"
+dependency "rubygems"
+dependency "chef-gem"
+dependency "puppet"
+build do
+  gem "install ronin-wrapper -n #{install_dir}/bin --no-rdoc --no-ri -v #{version}"
+  command "rm -rf /opt/#{name}/embedded/docs"
+  command "rm -rf /opt/#{name}/embedded/share/man"
+  command "rm -rf /opt/#{name}/embedded/share/doc"
+  command "rm -rf /opt/#{name}/embedded/ssl/man"
+  command "rm -rf /opt/#{name}/embedded/info"
+  command "rm -rf /opt/#{name}/embedded/lib/ruby/gems/1.9.1/doc/"
+end

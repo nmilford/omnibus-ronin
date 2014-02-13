@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Perform necessary ronin removal steps
+# after package is uninstalled.
+#
+
+echo "ronin has been uninstalled!"
+
+exit 0
