@@ -24,4 +24,8 @@ rm -f $DEST_DIR/$PROGNAME
 # You may want to symlink your packages bin files into /usr/bin
 # ln -sf $DEST_DIR/bin/ronin /usr/bin || error_exit "Cannot link ronin to /usr/bin"
 
+mkdir -p ${CONFIG_DIR} || error_exit "Cannot create ${CONFIG_DIR}!"
+
+ln -sf $INSTALLER_DIR/bin/ronin $PREFIX/bin || error_exit "Cannot link ronin to $PREFIX/bin"
+
 exit 0

@@ -1,8 +1,13 @@
+[nmilford@dev-ronin01.nj01 ronin]$ cat postrm
 #!/bin/bash
 #
 # Perform necessary ronin removal steps
 # after package is uninstalled.
 #
+
+PREFIX="/usr"
+
+rm -f $PREFIX/bin/ronin
 
 echo "ronin has been uninstalled!"
 

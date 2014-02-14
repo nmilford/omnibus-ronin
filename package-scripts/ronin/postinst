@@ -5,12 +5,21 @@
 #
 
 PROGNAME=$(basename $0)
+PREFIX="/usr"
+CONFIG_DIR=/etc/ronin
+INSTALLER_DIR=/opt/ronin
 
 function error_exit
 {
   echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
   exit 1
 }
+
+
+mkdir -p ${CONFIG_DIR} || error_exit "Cannot create ${CONFIG_DIR}!"
+
+rm -f $PREFIX/bin/ronin
+ln -sf $INSTALLER_DIR/bin/ronin $PREFIX/bin || error_exit "Cannot link ronin to $PREFIX/bin"
 
 echo "Thank you for installing ronin!"
 
