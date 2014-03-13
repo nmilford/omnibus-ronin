@@ -3,7 +3,7 @@ maintainer      "Nathan Milford <nathan@milford.io>"
 homepage        "https://github.com/nmilford/ronin"
 replaces        "ronin"
 install_path    "/opt/ronin"
-build_version   "0.1.2"
+build_version   "0.1.3"
 build_iteration 1
 dependency      "preparation"
 dependency      "version-manifest"

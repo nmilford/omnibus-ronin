@@ -8,6 +8,7 @@ PROGNAME=$(basename $0)
 PREFIX="/usr"
 CONFIG_DIR=/etc/ronin
 INSTALLER_DIR=/opt/ronin
+LOG_DIR=/var/log/ronin
 
 function error_exit
 {
@@ -15,8 +16,21 @@ function error_exit
   exit 1
 }
 
-
 mkdir -p ${CONFIG_DIR} || error_exit "Cannot create ${CONFIG_DIR}!"
+mkdir -p ${LOG_DIR} || error_exit "Cannot create ${LOG_DIR}!"
+
+if [ -f /etc/ronin/ronin.rb ]; then
+  cp /opt/ronin/embedded/share/ronin/ronin.rb ${CONFIG_DIR}/ronin.rb.new || error_exit "Cannot copy sample config to ${CONFIG_DIR}!"
+else
+  cp /opt/ronin/embedded/share/ronin/ronin.rb ${CONFIG_DIR}/ || error_exit "Cannot copy sample config to ${CONFIG_DIR}!"
+fi
+
+if [ -f /etc/ronin/artifacts.yaml ]; then
+  cp /opt/ronin/embedded/share/ronin/artifacts.yaml ${CONFIG_DIR}/artifacts.yaml.new || error_exit "Cannot copy sample config to ${CONFIG_DIR}!"
+else
+  cp /opt/ronin/embedded/share/ronin/artifacts.yaml ${CONFIG_DIR}/ || error_exit "Cannot copy sample config to ${CONFIG_DIR}!"
+fi
+
 
 rm -f $PREFIX/bin/ronin
 ln -sf $INSTALLER_DIR/bin/ronin $PREFIX/bin || error_exit "Cannot link ronin to $PREFIX/bin"

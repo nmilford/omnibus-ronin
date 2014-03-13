@@ -1,4 +1,3 @@
-[nmilford@dev-ronin01.nj01 ronin]$ cat postrm
 #!/bin/bash
 #
 # Perform necessary ronin removal steps
